@@ -3,14 +3,15 @@ import conection from "@/lib/db";
 
 export async function PUT(
     req: Request,
-    {params}:{params:{id: string}}
+    {params}:{params: Promise<{id: string}>}
 ){
     await conection;
 
+    const {id} = await params
     const body = await req.json()
 
     const updateUser = await User.findByIdAndUpdate(
-        params.id,
+        id,
         body,
         {new: true}
     )
