@@ -1,4 +1,3 @@
-// Capa de servicios de recetaos: obtiene el catálogo y el detalle desde el backend.
 import api from "@/lib/axios"
 import axios from "axios"
 

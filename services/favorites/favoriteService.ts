@@ -1,4 +1,3 @@
-// Capa de servicios de favoritos: lista y alterna (agregar/quitar) los favoritos del usuario.
 import api from "@/lib/axios"
 import axios from "axios"
 
