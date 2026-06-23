@@ -3,13 +3,11 @@
 
 import { useEffect, useState } from "react";
 import { getFavorites, toggleFavorite } from "@/services/favorites/favoriteService";
-import ProductCard from "@/components/ProductCard";
-import { useI18n } from "@/lib/i18n";
-import type { Product } from "@/types/product";
+import ProductCard from "@/components/recetaCard";
+import type { receta } from "@/types/receta";
 
 export default function FavoritesPage() {
-  const { t } = useI18n();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<receta[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,18 +24,18 @@ export default function FavoritesPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-10">
-      <h1 className="mb-8 text-3xl font-bold text-slate-900">{t("favorites.title")}</h1>
+      <h1 className="mb-8 text-3xl font-bold text-slate-900">Mis favoritos</h1>
 
       {loading ? (
-        <p className="text-slate-500">{t("common.loading")}</p>
+        <p className="text-slate-500">Cargando...</p>
       ) : products.length === 0 ? (
-        <p className="text-slate-500">{t("favorites.empty")}</p>
+        <p className="text-slate-500">Aún no tienes productos favoritos.</p>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard
               key={product._id}
-              product={product}
+              receta={product}
               isFavorite={true}
               onToggleFavorite={handleToggle}
             />

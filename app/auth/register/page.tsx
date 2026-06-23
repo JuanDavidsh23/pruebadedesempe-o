@@ -3,10 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CreateUser } from "@/services/auth/registerAuth";
-import { useI18n } from "@/lib/i18n";
 
 export default function RegisterPage() {
-  const { t } = useI18n();
   const router = useRouter();
   const [form, setForm] = useState({ nombre: "", cc: "", email: "", password: "", role: "user" });
   const [error, setError] = useState("");
@@ -39,28 +37,28 @@ export default function RegisterPage() {
           <div className="hidden bg-gradient-to-br from-sky-600 via-indigo-600 to-violet-700 p-10 text-white md:flex md:flex-col md:justify-between">
             <div>
               <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-sm font-medium backdrop-blur">
-                {t("register.badge")}
+                Crea tu cuenta
               </span>
               <h2 className="mt-6 text-4xl font-semibold leading-tight">
-                {t("register.welcomeTitle")}
+                Únete y gestiona tu cuenta con estilo y seguridad.
               </h2>
             </div>
             <p className="text-sm text-sky-50/90">
-              {t("register.welcomeText")}
+              Regístrate en segundos y empieza a usar tu panel personalizado.
             </p>
           </div>
 
           <div className="p-8 sm:p-10">
             <div className="mb-8 text-center md:text-left">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Simulacro</p>
-              <h1 className="mt-2 text-3xl font-semibold text-slate-900">{t("register.title")}</h1>
-              <p className="mt-1 text-sm text-slate-500">{t("register.subtitle")}</p>
+              <h1 className="mt-2 text-3xl font-semibold text-slate-900">Crear cuenta</h1>
+              <p className="mt-1 text-sm text-slate-500">Completa el formulario para registrarte</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="nombre" className="text-sm font-medium text-slate-700">
-                  {t("register.fullName")}
+                  Nombre completo
                 </label>
                 <input
                   id="nombre"
@@ -76,7 +74,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <label htmlFor="cc" className="text-sm font-medium text-slate-700">
-                  {t("register.cc")}
+                  Cédula
                 </label>
                 <input
                   id="cc"
@@ -92,7 +90,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium text-slate-700">
-                  {t("common.email")}
+                  Email
                 </label>
                 <input
                   id="email"
@@ -108,7 +106,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <label htmlFor="password" className="text-sm font-medium text-slate-700">
-                  {t("common.password")}
+                  Contraseña
                 </label>
                 <input
                   id="password"
@@ -124,7 +122,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <label htmlFor="role" className="text-sm font-medium text-slate-700">
-                  {t("register.role")}
+                  Rol
                 </label>
                 <select
                   id="role"
@@ -133,8 +131,8 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
                 >
-                  <option value="user">{t("register.roleUser")}</option>
-                  <option value="admin">{t("register.roleAdmin")}</option>
+                  <option value="user">Usuario</option>
+                  <option value="admin">Administrador</option>
                 </select>
               </div>
 
@@ -149,14 +147,14 @@ export default function RegisterPage() {
                 disabled={loading}
                 className="h-12 w-full rounded-xl bg-sky-600 font-semibold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-sky-400"
               >
-                {loading ? t("register.submitting") : t("register.submit")}
+                {loading ? "Creando cuenta..." : "Crear cuenta"}
               </button>
             </form>
 
             <p className="mt-6 text-center text-sm text-slate-500">
-              {t("register.haveAccount")}{" "}
+              ¿Ya tienes cuenta?{" "}
               <a href="/auth/login" className="font-semibold text-sky-600 hover:text-sky-700">
-                {t("register.login")}
+                Inicia sesión
               </a>
             </p>
           </div>

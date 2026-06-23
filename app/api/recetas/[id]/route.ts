@@ -1,5 +1,5 @@
 // Backend de detalle: devuelve un único producto por su id (incluye campos extendidos).
-import { Product } from "@/database/model";
+import { receta } from "@/database/model";
 import conection from "@/lib/db";
 import { NextRequest } from "next/server";
 
@@ -7,7 +7,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     await conection();
     const { id } = await params;
 
-    const product = await Product.findById(id);
+    const product = await receta.findById(id);
 
     if (!product) {
         return Response.json(

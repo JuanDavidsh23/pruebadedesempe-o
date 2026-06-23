@@ -3,10 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/services/auth/loginAuth";
-import { useI18n } from "@/lib/i18n";
 
 export default function LoginPage() {
-  const { t } = useI18n();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,28 +35,28 @@ export default function LoginPage() {
           <div className="hidden bg-gradient-to-br from-sky-600 via-indigo-600 to-violet-700 p-10 text-white md:flex md:flex-col md:justify-between">
             <div>
               <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-sm font-medium backdrop-blur">
-                {t("login.badge")}
+                Bienvenido de nuevo
               </span>
               <h2 className="mt-6 text-4xl font-semibold leading-tight">
-                {t("login.welcomeTitle")}
+                Gestiona tu cuenta con estilo y seguridad.
               </h2>
             </div>
             <p className="text-sm text-sky-50/90">
-              {t("login.welcomeText")}
+              Accede a tu panel, revisa información y continúa donde lo dejaste.
             </p>
           </div>
 
           <div className="p-8 sm:p-10">
             <div className="mb-8 text-center md:text-left">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Simulacro</p>
-              <h1 className="mt-2 text-3xl font-semibold text-slate-900">{t("login.title")}</h1>
-              <p className="mt-1 text-sm text-slate-500">{t("login.subtitle")}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">prueba de desempeño</p>
+              <h1 className="mt-2 text-3xl font-semibold text-slate-900">Iniciar sesión</h1>
+              <p className="mt-1 text-sm text-slate-500">Ingresa tus credenciales para continuar</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium text-slate-700">
-                  {t("common.email")}
+                  Email
                 </label>
                 <input
                   id="email"
@@ -73,7 +71,7 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <label htmlFor="password" className="text-sm font-medium text-slate-700">
-                  {t("common.password")}
+                  Contraseña
                 </label>
                 <input
                   id="password"
@@ -97,14 +95,14 @@ export default function LoginPage() {
                 disabled={loading}
                 className="h-12 w-full rounded-xl bg-sky-600 font-semibold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-sky-400"
               >
-                {loading ? t("login.submitting") : t("login.submit")}
+                {loading ? "Iniciando..." : "Iniciar sesión"}
               </button>
             </form>
 
             <p className="mt-6 text-center text-sm text-slate-500">
-              {t("login.noAccount")}{" "}
+              ¿No tienes cuenta?{" "}
               <a href="/auth/register" className="font-semibold text-sky-600 hover:text-sky-700">
-                {t("login.register")}
+                Regístrate
               </a>
             </p>
           </div>

@@ -16,7 +16,7 @@ export const getFavorites = async () => {
 
 export const toggleFavorite = async (productId: string) => {
     try {
-        const { data } = await api.post("/favorites", { productId })
+        const { data } = await api.post("/favorites", { recetaId: productId })
         return data
     } catch (err) {
         if (axios.isAxiosError(err)) {

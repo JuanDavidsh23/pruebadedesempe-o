@@ -15,26 +15,29 @@ try {
   User = model("users", userSchema);
 }
 
-const productSchema = new Schema({
+
+
+const recetaSchema = new Schema({
   nombre: { type: String, required: true },
-  precio: { type: Number, required: true },
   imagen: { type: String, required: true },
+  time: { type: String, required: true },
+  dificultad: { type: String, required: true },
   descripcion: { type: String, required: true },
-  descripcionExtendida: { type: String },
-  especificaciones: { type: [String], default: [] },
-  stock: { type: Number, default: 0 },
+  ingredientes: { type: [String], default: [] },
+  pasos: { type: [String], default: [] },
+  porciones: { type: Number, default: 1 },
 }, { timestamps: true });
 
-let Product: Model<any>;
+let receta: Model<any>;
 try {
-  Product = model("products");
+  receta = model("recetas");
 } catch {
-  Product = model("products", productSchema);
+  receta = model("recetas", recetaSchema);
 }
 
 const favoriteSchema = new Schema({
   userId: { type: String, required: true },
-  productId: { type: String, required: true },
+  recetaId: { type: String, required: true },
 }, { timestamps: true });
 
 let Favorite: Model<any>;
@@ -44,36 +47,6 @@ try {
   Favorite = model("favorites", favoriteSchema);
 }
 
-const cartSchema = new Schema({
-  userId: { type: String, required: true },
-  productId: { type: String, required: true },
-  cantidad: { type: Number, default: 1 },
-}, { timestamps: true });
 
-let Cart: Model<any>;
-try {
-  Cart = model("cart");
-} catch {
-  Cart = model("cart", cartSchema);
-}
-
-const saleSchema = new Schema({
-  userId: { type: String, required: true },
-  items: [{
-    productId: String,
-    nombre: String,
-    precio: Number,
-    cantidad: Number,
-  }],
-  total: { type: Number, required: true },
-}, { timestamps: true });
-
-let Sale: Model<any>;
-try {
-  Sale = model("sales");
-} catch {
-  Sale = model("sales", saleSchema);
-}
-
-export { Product, Favorite, Cart, Sale };
+export { receta, Favorite };
 export default User;
